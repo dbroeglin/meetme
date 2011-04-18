@@ -1,0 +1,14 @@
+= MeetMe!
+
+MeetMe! is a simple web application for running a conference server based on 
+Asterisk, JRuby and Padrino.
+
+= Install from source:
+
+    git clone git@github.com:dbroeglin/meetme.git
+    bundle install
+    mizuno
+
+Connect to http://localhost:9292
+
+But be warned, this is just a skeleton app !
