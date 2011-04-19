@@ -1,0 +1,15 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:conferences, :index)
+      %li=link_to pat(:new), url(:conferences, :new)
+      %li.active=link_to pat(:edit), url(:conferences, :edit, :id => @conference.id)
+  .content
+    %h2.title
+      =pat(:edit)
+      =mt(:conference)
+    .inner
+      -form_for :conference, url(:conferences, :update, :id => @conference.id), :method => :put, :class => :form do |f|
+        =partial "conferences/form", :locals => { :f => f }
+
+-content_for :sidebar, partial("base/sidebar")

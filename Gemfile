@@ -1,12 +1,21 @@
 source :rubygems
 
+# Make JRuby happy...
+gem 'jruby-openssl'
+
 # Project requirements
 gem 'rake'
 gem 'rack-flash'
-gem 'mizuno' # or mongrel
+gem 'mizuno'
 
 # Component requirements
-#gem 'haml'
+gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'haml'
+gem 'jdbc-sqlite3'
+gem 'dm-sqlite-adapter'
+gem 'data_mapper'
+
+gem 'sinatra-asterisk'
 
 # Test requirements
 

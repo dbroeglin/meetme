@@ -14,12 +14,14 @@ puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 # Add here your before load hooks
 #
 Padrino.before_load do
+    require "sinatra/asterisk"
 end
 
 ##
 # Add here your after load hooks
 #
 Padrino.after_load do
+  DataMapper.finalize
 end
 
 Padrino.load!

@@ -2,11 +2,69 @@ GEM
   remote: http://rubygems.org/
   specs:
     activesupport (3.0.6)
+    addressable (2.2.5)
+    bcrypt-ruby (2.1.4-java)
+    bouncy-castle-java (1.5.0145.2)
+    data_mapper (1.1.0)
+      dm-aggregates (= 1.1.0)
+      dm-constraints (= 1.1.0)
+      dm-core (= 1.1.0)
+      dm-migrations (= 1.1.0)
+      dm-serializer (= 1.1.0)
+      dm-timestamps (= 1.1.0)
+      dm-transactions (= 1.1.0)
+      dm-types (= 1.1.0)
+      dm-validations (= 1.1.0)
+    data_objects (0.10.3)
+      addressable (~> 2.1)
+    dm-aggregates (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-constraints (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-core (1.1.0)
+      addressable (~> 2.2.4)
+    dm-do-adapter (1.1.0)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.1.0)
+    dm-migrations (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-serializer (1.1.0)
+      dm-core (~> 1.1.0)
+      fastercsv (~> 1.5.4)
+      json (~> 1.4.6)
+    dm-sqlite-adapter (1.1.0)
+      dm-do-adapter (~> 1.1.0)
+      do_sqlite3 (~> 0.10.2)
+    dm-timestamps (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-transactions (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-types (1.1.0)
+      bcrypt-ruby (~> 2.1.4)
+      dm-core (~> 1.1.0)
+      fastercsv (~> 1.5.4)
+      json (~> 1.4.6)
+      stringex (~> 1.2.0)
+      uuidtools (~> 2.1.2)
+    dm-validations (1.1.0)
+      dm-core (~> 1.1.0)
+    do_jdbc (0.10.3-java)
+      data_objects (= 0.10.3)
+    do_sqlite3 (0.10.3-java)
+      data_objects (= 0.10.3)
+      do_jdbc (= 0.10.3)
+      jdbc-sqlite3 (>= 3.5.8)
+    fastercsv (1.5.4)
     git (1.2.5)
+    haml (3.0.25)
     http_router (0.5.4)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
     i18n (0.5.0)
+    jdbc-sqlite3 (3.6.14.2.056-java)
+    jruby-openssl (0.7.3)
+      bouncy-castle-java
+    json (1.4.6-java)
     mail (2.2.16)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -51,6 +109,9 @@ GEM
     sinatra (1.2.3)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
+    sinatra-asterisk (0.0.1)
+      sinatra (~> 1.0)
+    stringex (1.2.1)
     thor (0.14.6)
     tilt (1.2.2)
     treetop (1.4.9)
@@ -58,12 +119,20 @@ GEM
     tzinfo (0.3.26)
     url_mount (0.2.1)
       rack
+    uuidtools (2.1.2)
 
 PLATFORMS
   java
 
 DEPENDENCIES
+  bcrypt-ruby
+  data_mapper
+  dm-sqlite-adapter
+  haml
+  jdbc-sqlite3
+  jruby-openssl
   mizuno
   padrino (= 0.9.23)
   rack-flash
   rake
+  sinatra-asterisk

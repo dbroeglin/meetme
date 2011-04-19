@@ -1,7 +1,7 @@
-class Meetme < Padrino::Application
+class Admin < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
-  register Sinatra::Asterisk
+  register Padrino::Admin::AccessControl
 
   ##
   # Application configuration options
@@ -10,35 +10,22 @@ class Meetme < Padrino::Application
   # set :public, "foo/bar"      # Location for static assets (default root/public)
   # set :reload, false          # Reload application files (default in development)
   # set :default_builder, "foo" # Set a custom form builder (default 'StandardFormBuilder')
-  # set :locale_path, "bar"     # Set path for I18n translations (defaults to app/locale/)
+  # set :locale_path, "bar"     # Set path for I18n translations (default your_app/locales)
   # enable  :sessions           # Disabled by default
   # disable :flash              # Disables rack-flash (enabled by default if sessions)
   # layout  :my_layout          # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
 
-  ##
-  # You can configure for a specified environment like:
-  #
-  #   configure :development do
-  #     set :foo, :bar
-  #     disable :asset_stamp # no asset timestamping for dev
-  #   end
-  #
+  set :login_page, "/admin/sessions/new"
+  disable :store_location
 
-  start_agi_server
-
-  get '/' do
-    render 'conferences/index' 
+  access_control.roles_for :any do |role|
+    role.protect "/"
+    role.allow "/sessions"
   end
 
-
-  agi /.*/, :ext => :_123 do
+  access_control.roles_for :admin do |role|
+      role.project_module :conferences, "/conferences"
+      role.project_module :accounts, "/accounts"
   end
-  ##
-  # You can manage errors like:
-  #
-  #   error 404 do
-  #     render 'errors/404'
-  #   end
-  #
 end

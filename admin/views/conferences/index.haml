@@ -1,0 +1,27 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:conferences, :index)
+      %li=link_to pat(:new), url(:conferences, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:conferences)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:conference, :id)
+          %th=mat(:conference, :description)
+          %th.last="&nbsp;"
+        -@conferences.each do |conference|
+          %tr
+            %td.first=conference.id
+            %td=conference.description
+            %td.last
+              =button_to pat(:edit), url(:conferences, :edit, :id => conference.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:conferences, :destroy, :id => conference.id), :method => :delete, :class => :button_to
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
