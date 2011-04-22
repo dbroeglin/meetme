@@ -12,3 +12,18 @@ Asterisk, JRuby and Padrino.
 Connect to http://localhost:9292
 
 But be warned, this is just a skeleton app !
+
+= Run in a Vagrant VM:
+
+From the source directory:
+
+    gem install vagrant
+    vagrant up
+
+After the VM has started:
+
+    vagrant ssh
+    rvm jruby-1.6.0
+    sudo -E /usr/local/rvm/gems/jruby-1.6.0@global/bin/bundle install
+    jruby -J-Xmx256m -S mizuno 
+
