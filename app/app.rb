@@ -25,7 +25,12 @@ class Meetme < Padrino::Application
   #   end
   #
 
+  connect_to_manager "127.0.0.1", "meetme", "meetmetest"
   start_agi_server
+
+  cmd = "dialplan add extension test,1,Agi,agi://localhost:4573/test into default replace"
+  action = org.asteriskjava.manager.action.CommandAction::new(cmd)
+  puts manager.sendAction(action).result.join("\n")
 
   get '/' do
     render 'conferences/index' 
@@ -33,6 +38,9 @@ class Meetme < Padrino::Application
 
 
   agi /.*/, :ext => :_123 do
+      puts "===== Called #{request}"
+      channel.exec "NoOp", "HelloWorld!"
+      channel.hangup
   end
   ##
   # You can manage errors like:

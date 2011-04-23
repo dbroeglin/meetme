@@ -23,7 +23,9 @@ From the source directory:
 After the VM has started:
 
     vagrant ssh
+    cd /vagrant
     rvm jruby-1.6.0
     sudo -E /usr/local/rvm/gems/jruby-1.6.0@global/bin/bundle install
+    rake asterisk:prepare
     jruby -J-Xmx256m -S mizuno 
 

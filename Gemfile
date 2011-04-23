@@ -18,6 +18,11 @@ gem 'data_mapper'
 gem 'sinatra-asterisk'
 
 # Test requirements
+group :test do
+  gem 'rspec', :group => "test"
+  gem 'rack-test', :require => "rack/test", :group => "test"
+end
+
 
 
 # Padrino
