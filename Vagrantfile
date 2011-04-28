@@ -5,8 +5,19 @@ Vagrant::Config.run do |config|
   end
   # config.vm.boot_mode = :gui
   # config.vm.network "33.33.33.10"
-  config.vm.forward_port "http", 9292, 9292
-  config.vm.forward_port "SIP",  5060, 5060, :protocol => :udp
+  
+
+  Vagrant::Config.run do |config|
+    config.vm.network("33.33.33.10")
+  end
+
+
+  #config.vm.forward_port "http", 9292, 9292
+  #config.vm.forward_port "SIP",  5060, 5060, :protocol => :udp
+  #(10000..10002).each do |port|
+  #  config.vm.forward_port "RTP-#{port}",  port, port, :protocol => :udp
+  #end
+
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
