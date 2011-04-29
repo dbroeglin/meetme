@@ -9,6 +9,6 @@ namespace :asterisk do
     
     desc """Launch a verbose Asterisk console"""
     task :console do
-        sh "sudo asterisk -rvvvvvvvvd"
+        sh "bash -c 'sudo asterisk -rvvvvvvvvd'"
     end
 end

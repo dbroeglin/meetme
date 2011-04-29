@@ -41,8 +41,14 @@ class Meetme < Padrino::Application
       puts "===== Called #{request}"
       channel.answer
       channel.exec "Wait", "1"
-      channel.exec "Authenticate", "1234,,4"
-      channel.exec "Meetme", "18,d"
+      conf = nil
+      while conf.nil? 
+        number = channel.getData("en_US_f_Allison/conf-getconfno")
+        conf   = Conference.first(:number => number)
+        channel.streamFile "en_US_f_Allison/conf-invalid" if conf.nil?
+      end
+      channel.exec "Authenticate", "#{conf.pin},,#{conf.pin..to_s.length}"
+      channel.exec "Meetme", "#{number},d"
       channel.hangup
   end
 

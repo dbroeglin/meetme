@@ -25,8 +25,7 @@ After the VM started for the first time:
 
     vagrant ssh
     cd /vagrant
-    rvm jruby-1.6.0
-    sudo -E /usr/local/rvm/gems/jruby-1.6.0@global/bin/bundle install
+    bundle install
     rake asterisk:prepare
     jruby -J-Xmx256m -S mizuno 
 
@@ -34,7 +33,6 @@ Afterwards you only need to:
 
     vagrant ssh
     cd /vagrant
-    rvm jruby-1.6.0
     jruby -J-Xmx256m -S mizuno 
 
 Inside the VM you can access the asterisk console with:
